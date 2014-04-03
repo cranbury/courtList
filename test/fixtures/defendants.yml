@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  in_custody: false
+  prisoner_number: MyString
+  email: MyString
+  phone_number: MyString
+
+two:
+  name: MyString
+  in_custody: false
+  prisoner_number: MyString
+  email: MyString
+  phone_number: MyString
