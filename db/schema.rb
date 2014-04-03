@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403190012) do
+ActiveRecord::Schema.define(version: 20140403190350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20140403190012) do
     t.string   "room"
     t.boolean  "in_session"
     t.time     "back_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "matters", force: true do |t|
+    t.string   "docket_number"
+    t.time     "update_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
