@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-04-03
+  start_time: 2014-04-03 14:52:23
+  room: MyString
+  in_session: false
+  back_at: 2014-04-03 14:52:23
+
+two:
+  date: 2014-04-03
+  start_time: 2014-04-03 14:52:23
+  room: MyString
+  in_session: false
+  back_at: 2014-04-03 14:52:23
