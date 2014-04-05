@@ -1,3 +1,3 @@
-// function getLists() {
-//   return $.getJSO
-// }
+function getLists() {
+  return $.getJSON('/lists');
+}

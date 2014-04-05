@@ -1,0 +1,7 @@
+<h1>Court</h1>
+
+<ul>
+<% @lists.each do |list| %>
+  <li><a href='/lists/<%= list.id %>'><%= list.room %></a></li>
+<% end %>
+</ul>
