@@ -1,10 +1,10 @@
 var Matter = Backbone.Model.extend({ 
-  urlRoot: "/lists/" + window.list_id + "/matters"
+  urlRoot: "/lists/1/matters"
 });
 
 var MatterCollection = Backbone.Collection.extend({
   model: Matter,
-  url: "/lists/" + window.list_id + "/matters"
+  url: "/lists/1/matters"
 });
 
 var MatterView = Backbone.View.extend({
@@ -72,8 +72,8 @@ var ListView = Backbone.View.extend({
 });
 
 $(document).ready(function() {
-  var matters = new MatterCollection();
-  var listView = new ListView({collection: matters});
-  var formView = new FormView({collection: matters});
+  matters = new MatterCollection();
+  listView = new ListView({collection: matters});
+  formView = new FormView({collection: matters});
   matters.fetch({ reset: true });
 });
