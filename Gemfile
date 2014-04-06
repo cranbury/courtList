@@ -40,6 +40,9 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+#gem "backbone-rails"
+gem "rails-backbone"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

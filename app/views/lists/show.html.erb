@@ -1,3 +1,16 @@
 list show
 
 <%= @list.room %>
+<script>window.list_id = <%= @list.id %></script>
+<br>
+
+<ul class="matters">
+</ul>
+
+<script type="template" class="template">
+  <li class="<%%= matter.done ? "done" : "" %>">
+    <%%= matter.task %>
+    <input type="checkbox" <%%= matter.done ? "checked" : "" %>/>
+    <span>&times;</span>
+  </li>
+</script>

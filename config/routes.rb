@@ -1,8 +1,9 @@
 CourtList::Application.routes.draw do
 
   root 'welcome#index'
-  resources :lists, only: [:index, :show]
-  resources :matters, only: [:index, :show]
+  resources :lists, only: [:index, :show] do
+    resources :matters, only: [:index, :show]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
