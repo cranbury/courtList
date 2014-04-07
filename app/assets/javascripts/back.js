@@ -1,10 +1,10 @@
 var Matter = Backbone.Model.extend({ 
-  urlRoot: "/lists/1/matters"
+  urlRoot: "/lists/"+window.list_id+"/matters"
 });
 
 var MatterCollection = Backbone.Collection.extend({
   model: Matter,
-  url: "/lists/1/matters"
+  url: "/lists/"+"1"+"/matters"
 });
 
 var MatterView = Backbone.View.extend({
@@ -47,8 +47,8 @@ var FormView = Backbone.View.extend({
 
   createMatter: function(e) {
     e.preventDefault();
-    var task = this.el.elements["task"].value;
-    this.collection.create({task: task});
+    var docket_number = this.el.elements["docket_number"].value;
+    this.collection.create({docket_number: docket_number});
     this.el.reset();
   }
 });
@@ -72,6 +72,14 @@ var ListView = Backbone.View.extend({
 });
 
 $(document).ready(function() {
+  var Matter = Backbone.Model.extend({ 
+    urlRoot: "/lists/"+window.list_id+"/matters"
+  });
+
+  var MatterCollection = Backbone.Collection.extend({
+    model: Matter,
+    url: "/lists/"+window.list_id+"/matters"
+  });
   matters = new MatterCollection();
   listView = new ListView({collection: matters});
   formView = new FormView({collection: matters});
