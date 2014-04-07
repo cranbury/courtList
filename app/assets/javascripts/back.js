@@ -72,9 +72,9 @@ var ListView = Backbone.View.extend({
 });
 
 $(document).ready(function() {
-  var Matter = Backbone.Model.extend({ 
-    urlRoot: "/lists/"+window.list_id+"/matters"
-  });
+  // var Matter = Backbone.Model.extend({ 
+  //   urlRoot: "/lists/"+window.list_id+"/matters"
+  // });
 
   var MatterCollection = Backbone.Collection.extend({
     model: Matter,

@@ -8,9 +8,9 @@ list show
 </ul>
 
 <script type="template" class="template">
-  <li class="<%%= matter.done ? "done" : "" %>">
-    <%%= matter.task %>
-    <input type="checkbox" <%%= matter.done ? "checked" : "" %>/>
+  <li class="<%%= matter.get('done') ? "done" : "" %>">
+    <%%= matter.get('docket_number') %>
+    <input type="checkbox" <%%= matter.get('done') ? "checked" : "" %>/>
     <span>&times;</span>
   </li>
 </script>
