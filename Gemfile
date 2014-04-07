@@ -7,13 +7,13 @@ gem 'rails', '4.0.3'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+#gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+#gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -44,6 +44,17 @@ end
 gem "rails-backbone"
 
 gem 'pry-rails'
+
+gem 'foundation-rails'
+
+group :assets do
+  gem 'sass-rails',  '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
+
+  # Add these gems
+  gem 'compass-rails'
+  gem 'zurb-foundation'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -18,5 +18,9 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/court_list
+
+//= require foundation
 //= require_tree .
 
+
+$(function(){ $(document).foundation(); });
