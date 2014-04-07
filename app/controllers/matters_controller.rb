@@ -21,6 +21,12 @@ class MattersController < ApplicationController
     render json: @matter
   end
 
+  def destroy
+    @matter = Matter.find(params[:id])
+    @matter.destroy
+    render json: Matter.all
+  end
+
   private
   def matter_params
     params.permit(:disposition, :done, :docket_number)

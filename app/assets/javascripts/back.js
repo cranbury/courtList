@@ -1,3 +1,10 @@
+setInterval(reDo, 5000);
+
+function reDo() {
+  $('ul').empty();
+  matters.fetch({ reset: true }); 
+}
+
 var Matter = Backbone.Model.extend({ 
   urlRoot: "/lists/"+window.list_id+"/matters"
 });
@@ -35,8 +42,21 @@ var MatterView = Backbone.View.extend({
     var template = $("script.template").html();
     var rendered = _.template(template, { matter: this.model });
     this.$el.html(rendered);
+
+    //setInterval(function(){    console.log("hi");}, 1000);
+
+  },
+
+  reRender: function() {
+    matters.fetch({ reset: true });
+    listView = new ListView({collection: matters});
+    formView = new FormView({collection: matters});
+    var template = $("script.template").html();
+    var rendered = _.template(template, { matter: this.model });
+    this.$el.html(rendered);
   }
 });
+
 
 var FormView = Backbone.View.extend({
   el: "form",
@@ -68,6 +88,10 @@ var ListView = Backbone.View.extend({
   addOne: function(matter) {
     var view = new MatterView({model: matter});
     this.$el.append(view.el);
+  },
+
+  removeAll: function(){
+    this
   }
 });
 
