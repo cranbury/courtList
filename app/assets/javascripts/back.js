@@ -1,6 +1,7 @@
 setInterval(reDo, 1000);
 benchMode = false;
 savedTime = "";
+mattersLength = 0;
 
 function reDo() {
   if (!benchMode){
@@ -18,15 +19,20 @@ $(function() {
 
 function shouldUpdate() {
   latestTime = matters.toArray()[0].attributes.updated_at;
+  if (mattersLength != matters.toArray().length){
+    mattersLength = matters.toArray().length;
+    lengthWrong = true;
+  } else { lengthWrong = false};
+
   for (var i = 0; i < matters.toArray().length; i++) {
     var newTime = matters.toArray()[i].attributes.updated_at;
     newTime > latestTime ? latestTime = newTime : latestTime;
   };
 
   savedTime < latestTime ? returnStuff = true : returnStuff = false;
-  savedTime < latestTime ? savedTime = latestTime  : savedTime = savedTime;
+  if (savedTime < latestTime) {savedTime = latestTime};
 
-  return returnStuff;
+  return returnStuff || lengthWrong;
 }
 
 var Matter = Backbone.Model.extend({ 
@@ -116,10 +122,6 @@ var ListView = Backbone.View.extend({
   addOne: function(matter) {
     var view = new MatterView({model: matter});
     this.$el.append(view.el);
-  },
-
-  removeAll: function(){
-    this
   }
 });
 
