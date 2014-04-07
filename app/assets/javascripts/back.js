@@ -1,9 +1,9 @@
-setInterval(reDo, 15000);
+setInterval(reDo, 1000);
 benchMode = false;
+savedTime = "";
 
 function reDo() {
   if (!benchMode){
-    console.log('going to fetch')
     matters.fetch({ reset: true }); }
 }
 
@@ -16,13 +16,17 @@ $(function() {
   $( "#sortable" ).disableSelection();
 });
 
-function latestUpdate() {
+function shouldUpdate() {
   latestTime = matters.toArray()[0].attributes.updated_at;
   for (var i = 0; i < matters.toArray().length; i++) {
     var newTime = matters.toArray()[i].attributes.updated_at;
-    newTime > latestTime ? newTime : latestTime;
-  }
-  savedTime = latestTime;
+    newTime > latestTime ? latestTime = newTime : latestTime;
+  };
+
+  savedTime < latestTime ? returnStuff = true : returnStuff = false;
+  savedTime < latestTime ? savedTime = latestTime  : savedTime = savedTime;
+
+  return returnStuff;
 }
 
 var Matter = Backbone.Model.extend({ 
@@ -102,9 +106,11 @@ var ListView = Backbone.View.extend({
   },
 
   addAll: function() {
-    $('ul').empty();
-    console.log("add all");
-    this.collection.each(this.addOne.bind(this));
+    if(shouldUpdate()){
+      $('ul').empty();
+      console.log("shouldUpdate");
+      this.collection.each(this.addOne.bind(this));
+    }
   },
 
   addOne: function(matter) {
