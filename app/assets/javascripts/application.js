@@ -18,7 +18,7 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/court_list
-
+//= require jquery.ui.all
 //= require foundation
 //= require_tree .
 

@@ -1,8 +1,28 @@
-setInterval(reDo, 5000);
+setInterval(reDo, 15000);
+benchMode = false;
 
 function reDo() {
-  $('section').empty();
-  matters.fetch({ reset: true }); 
+  if (!benchMode){
+    console.log('going to fetch')
+    matters.fetch({ reset: true }); }
+}
+
+$(function() {
+  $( "#draggable" ).draggable();
+});
+
+$(function() {
+  $( "#sortable" ).sortable();
+  $( "#sortable" ).disableSelection();
+});
+
+function latestUpdate() {
+  latestTime = matters.toArray()[0].attributes.updated_at;
+  for (var i = 0; i < matters.toArray().length; i++) {
+    var newTime = matters.toArray()[i].attributes.updated_at;
+    newTime > latestTime ? newTime : latestTime;
+  }
+  savedTime = latestTime;
 }
 
 var Matter = Backbone.Model.extend({ 
@@ -45,16 +65,16 @@ var MatterView = Backbone.View.extend({
 
     //setInterval(function(){    console.log("hi");}, 1000);
 
-  },
-
-  reRender: function() {
-    matters.fetch({ reset: true });
-    listView = new ListView({collection: matters});
-    formView = new FormView({collection: matters});
-    var template = $("script.template").html();
-    var rendered = _.template(template, { matter: this.model });
-    this.$el.html(rendered);
   }
+
+  // reRender: function() {
+  //   matters.fetch({ reset: true });
+  //   listView = new ListView({collection: matters});
+  //   formView = new FormView({collection: matters});
+  //   var template = $("script.template").html();
+  //   var rendered = _.template(template, { matter: this.model });
+  //   this.$el.html(rendered);
+  // }
 });
 
 
@@ -74,7 +94,7 @@ var FormView = Backbone.View.extend({
 });
 
 var ListView = Backbone.View.extend({
-  el: "section",
+  el: "ul",
 
   initialize: function() {
     this.listenTo(this.collection, "reset", this.addAll);
@@ -82,6 +102,8 @@ var ListView = Backbone.View.extend({
   },
 
   addAll: function() {
+    $('ul').empty();
+    console.log("add all");
     this.collection.each(this.addOne.bind(this));
   },
 
