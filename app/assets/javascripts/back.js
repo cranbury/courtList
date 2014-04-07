@@ -1,7 +1,7 @@
 setInterval(reDo, 5000);
 
 function reDo() {
-  $('ul').empty();
+  $('section').empty();
   matters.fetch({ reset: true }); 
 }
 
@@ -74,7 +74,7 @@ var FormView = Backbone.View.extend({
 });
 
 var ListView = Backbone.View.extend({
-  el: "ul",
+  el: "section",
 
   initialize: function() {
     this.listenTo(this.collection, "reset", this.addAll);
