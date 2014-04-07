@@ -21,8 +21,8 @@ var MatterView = Backbone.View.extend({
   },
 
   toggleDone: function(e) {
-    var checked = $(e.target).is(":checked");
-    this.model.set('done', checked);
+    var done = $(e.target).is(":checked");
+    this.model.set('done', done);
     this.model.save();
   },
 

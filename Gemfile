@@ -43,6 +43,8 @@ end
 #gem "backbone-rails"
 gem "rails-backbone"
 
+gem 'pry-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

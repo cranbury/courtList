@@ -9,5 +9,16 @@ class MattersController < ApplicationController
     @matter = Matter.find(params[:id])
   end
 
+  def update
+    #binding.pry
+    @matter = Matter.find(params[:id])
+    @matter.update(matter_params)
+    render json:@matter
+  end
+
+  private
+  def matter_params
+    params.permit(:disposition, :done)
+  end
 
 end
