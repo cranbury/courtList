@@ -1,4 +1,15 @@
-list show
+<h1>CourtList</h1>
+<form>
+  <fieldset>
+    <legend>New Matter</legend>
+    <label>
+      Docket Number
+      <input type="text" name="docket_number" />
+    </label>
+    <button>Save</button>
+  </fieldset>
+</form>
+
 
 <%= @list.room %>
 <script>window.list_id = <%= @list.id %></script>
@@ -9,7 +20,8 @@ list show
 
 <script type="template" class="template">
   <li class="<%%= matter.get('done') ? "done" : "" %>">
-    <%%= matter.get('docket_number') %>
+    docket_number: <%%= matter.get('docket_number') %>
+    disposition: <%%= matter.get('disposition') %>
     <input type="checkbox" <%%= matter.get('done') ? "checked" : "" %>/>
     <span>&times;</span>
   </li>

@@ -15,9 +15,15 @@ class MattersController < ApplicationController
     render json:@matter
   end
 
+  def create
+    @matter = Matter.create(matter_params)
+    @matter.update(list_id: params[:list_id])
+    render json: @matter
+  end
+
   private
   def matter_params
-    params.permit(:disposition, :done)
+    params.permit(:disposition, :done, :docket_number)
   end
 
 end
