@@ -17,7 +17,7 @@ function init() {
 function handleDragStop( event, ui ) {
   var offsetXPos = parseInt( ui.offset.left );
   var offsetYPos = parseInt( ui.offset.top );
-  alert( "Drag stopped!\n\nOffset: (" + offsetXPos + ", " + offsetYPos + ")\n");
+  alert( "Drag stopped!\n\nOffset: (" + offsetXPos + ", " + offsetYPos + ", "+ event.target +")\n");
 }
 
 function reDo() {
@@ -80,6 +80,11 @@ var MatterView = Backbone.View.extend({
     this.model.save();
   },
 
+  setNumberOnList: function(numberOnList) {
+    this.model.set('number_on_list', numberOnList);
+    this.model.save();
+  },
+
   destroy: function() {
     this.model.destroy();
     this.remove();
@@ -89,19 +94,8 @@ var MatterView = Backbone.View.extend({
     var template = $("script.template").html();
     var rendered = _.template(template, { matter: this.model });
     this.$el.html(rendered);
-
-    //setInterval(function(){    console.log("hi");}, 1000);
-
   }
 
-  // reRender: function() {
-  //   matters.fetch({ reset: true });
-  //   listView = new ListView({collection: matters});
-  //   formView = new FormView({collection: matters});
-  //   var template = $("script.template").html();
-  //   var rendered = _.template(template, { matter: this.model });
-  //   this.$el.html(rendered);
-  // }
 });
 
 
@@ -130,6 +124,7 @@ var ListView = Backbone.View.extend({
 
   addAll: function() {
     if(shouldUpdate()){
+      itemsOnList = 0;
       $('ul').empty();
       console.log("shouldUpdate");
       this.collection.each(this.addOne.bind(this));
@@ -139,7 +134,8 @@ var ListView = Backbone.View.extend({
   addOne: function(matter) {
     var view = new MatterView({model: matter});
     this.$el.append(view.el);
-
+    view.setNumberOnList(itemsOnList);
+    itemsOnList++;
   }
 });
 

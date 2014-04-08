@@ -29,7 +29,7 @@ class MattersController < ApplicationController
 
   private
   def matter_params
-    params.permit(:disposition, :done, :docket_number)
+    params.permit(:disposition, :done, :docket_number, :number_on_list)
   end
 
 end
