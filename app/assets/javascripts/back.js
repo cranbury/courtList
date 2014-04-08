@@ -5,19 +5,37 @@ mattersLength = 0;
 
 
 $( init );
- 
+
 function init() {
   $('#sortable').sortable( {
     cursor: 'move',
     containment: 'document',
-    stop: handleDragStop
+    start: starts,
+    update: ups
   } );
+  //sorted = $("#sortable").sortable( "serialize", { key: "sort" } );
 }
+
+function starts(e, ui) {
+  // creates a temporary attribute on the element with the old index
+  $(this).attr('data-previndex', ui.item.index());
+    }
+
+function ups(e, ui) {
+  var newIndex = ui.item.index();
+  var oldIndex = $(this).attr('data-previndex');
+  $(this).removeAttr('data-previndex');
+  console.log(oldIndex); console.log(newIndex);
+}
+
+
  
 function handleDragStop( event, ui ) {
-  var offsetXPos = parseInt( ui.offset.left );
-  var offsetYPos = parseInt( ui.offset.top );
-  alert( "Drag stopped!\n\nOffset: (" + offsetXPos + ", " + offsetYPos + ", "+ event.target +")\n");
+  var posXPos = parseInt( ui.position.left );
+  var posYPos = parseInt( ui.position.top );
+  var oPosXPos = parseInt( ui.originalPosition.left );
+  var oPosYPos = parseInt( ui.originalPosition.top );
+  console.log( "Drag stopped!\n\nPosition: (" + posXPos + ", " + posYPos + ")\n" + "difference: (" + (oPosXPos - posXPos) + ", " + (oPosYPos - posYPos) + ")\n");
 }
 
 function reDo() {
