@@ -3,19 +3,36 @@ benchMode = false;
 savedTime = "";
 mattersLength = 0;
 
+
+$( init );
+ 
+function init() {
+  $('#sortable').sortable( {
+    cursor: 'move',
+    containment: 'document',
+    stop: handleDragStop
+  } );
+}
+ 
+function handleDragStop( event, ui ) {
+  var offsetXPos = parseInt( ui.offset.left );
+  var offsetYPos = parseInt( ui.offset.top );
+  alert( "Drag stopped!\n\nOffset: (" + offsetXPos + ", " + offsetYPos + ")\n");
+}
+
 function reDo() {
   if (!benchMode){
     matters.fetch({ reset: true }); }
-}
+};
 
 $(function() {
   $( "#draggable" ).draggable();
 });
 
-$(function() {
-  $( "#sortable" ).sortable();
-  $( "#sortable" ).disableSelection();
-});
+// $(function() {
+//   $( "#sortable" ).sortable();
+//   $( "#sortable" ).disableSelection();
+// });
 
 function shouldUpdate() {
   latestTime = matters.toArray()[0].attributes.updated_at;
@@ -122,6 +139,7 @@ var ListView = Backbone.View.extend({
   addOne: function(matter) {
     var view = new MatterView({model: matter});
     this.$el.append(view.el);
+
   }
 });
 
