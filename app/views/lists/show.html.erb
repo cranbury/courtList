@@ -3,7 +3,7 @@
   <fieldset>
     <legend>New Matter</legend>
     <label>
-      Docket Number
+      Case:
       <input type="text" name="docket_number" />
     </label>
     <button>Save</button>
@@ -22,10 +22,10 @@
 
 <script type="template" class="template">
   <li class="ui-state-default row <%%= matter.get('done') ? "done" : "" %>">
-    docket number: <%%= matter.get('docket_number') %>
-    number on list: <%%= matter.get('number_on_list') %>
+    Case: <%%= matter.get('docket_number') %>
+     #<%%= matter.get('number_on_list') %>
     
-    disposition: <%%= matter.get('disposition') %>
+    <%%= matter.get('disposition') %>
     <input type="checkbox" <%%= matter.get('done') ? "checked" : "" %>/>
     <span>&times;</span>
   </li>
