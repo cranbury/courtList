@@ -22,8 +22,9 @@
 
 <script type="template" class="template">
   <li class="ui-state-default row <%%= matter.get('done') ? "done" : "" %>">
-    docket_number: <%%= matter.get('docket_number') %>
-    <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+    docket number: <%%= matter.get('docket_number') %>
+    number on list: <%%= matter.get('number_on_list') %>
+    
     disposition: <%%= matter.get('disposition') %>
     <input type="checkbox" <%%= matter.get('done') ? "checked" : "" %>/>
     <span>&times;</span>
