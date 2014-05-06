@@ -1,3 +1,4 @@
+//The interval to refresh my results
 setInterval(reDo, 1000);
 benchMode = false;
 savedTime = "";
@@ -16,6 +17,15 @@ function init() {
   } );
   //sorted = $("#sortable").sortable( "serialize", { key: "sort" } );
 }
+
+  $(document).bind('pageinit', function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+    <!-- Refresh list to the end of sort to have a correct display -->
+    $( "#sortable" ).bind( "sortstop", function(event, ui) {
+      $('#sortable').listview('refresh');
+    });
+  });
 
 function starts(e, ui) {
   // creates a temporary attribute on the element with the old index

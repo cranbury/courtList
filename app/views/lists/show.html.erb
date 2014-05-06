@@ -1,4 +1,6 @@
-<h1>CourtList</h1>
+  <div data-role="header" data-theme="d">
+    <h1>CourtList</h1>
+  </div>
 <form>
   <fieldset>
     <legend>New Matter</legend>
@@ -17,8 +19,11 @@
 <script>window.list_id = <%= @list.id %></script>
 <br>
 
-<ul id="sortable" class="ui-widget-content matters">
-</ul>
+<div data-role="content" data-theme="c">
+ <ul data-role="listview" data-inset="true" data-theme="d" id="sortable">
+    <li data-role="list-divider">List</li>
+  </ul>
+</div>
 
 <script type="template" class="template">
   <li class="ui-state-default row <%%= matter.get('done') ? "done" : "" %>">
