@@ -19,6 +19,7 @@
   font-size: 1.4em; 
   height: 40px; 
   line-height: 20px;
+  text-align: 40%;
 }
 
 #sortable li span { 
@@ -28,4 +29,21 @@
 
 p {
   width: 50%;
+}
+
+#highlight {
+  background-color: red;
+}
+
+.delete {
+  height: 20px;
+  width: 20px;
+  margin: 0 10px 10px 10px;
+}
+
+@media (min-width: 600px) {
+  #sortable li{
+    width: 600px;
+  }
+
 }

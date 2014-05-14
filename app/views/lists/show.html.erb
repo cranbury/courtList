@@ -6,7 +6,7 @@
     <legend>New Matter</legend>
     <label>
       Case:
-      <input type="text" name="docket_number" />
+      <input style='width:600px'id='case-name' type="text" name="docket_number" />
     </label>
     <button>Save</button>
   </fieldset>
@@ -27,11 +27,13 @@
 
 <script type="template" class="template">
   <li class="ui-state-default row <%%= matter.get('done') ? "done" : "" %>">
-    Case: <%%= matter.get('docket_number') %>
+    <%%= matter.get('docket_number') %>
      #<%%= matter.get('number_on_list') %>
     
     <%%= matter.get('disposition') %>
     <input type="checkbox" <%%= matter.get('done') ? "checked" : "" %>/>
-    <span>&times;</span>
+    <span><svg class="delete"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Your_Icon" x="0px" y="0px" width="48px" height="48px" viewBox="17 176.375 48 48" enable-background="new 17 176.375 48 48" xml:space="preserve">
+<path fill="#000000" d="M41,176.375c-13.255,0-24,10.745-24,24c0,13.254,10.745,24,24,24s24-10.746,24-24  C65,187.12,54.255,176.375,41,176.375z M50.062,204.133c1.557,1.557,1.636,4.021,0.178,5.48c-1.459,1.459-3.926,1.379-5.48-0.178  L41,205.678l-3.759,3.758c-1.556,1.559-4.021,1.639-5.48,0.18c-1.458-1.461-1.379-3.926,0.178-5.48l3.758-3.758l-3.758-3.758  c-1.557-1.556-1.636-4.022-0.178-5.479c1.459-1.459,3.925-1.38,5.48,0.176L41,195.07l3.759-3.758  c1.556-1.557,4.021-1.636,5.479-0.178c1.457,1.458,1.38,3.924-0.178,5.48l-3.759,3.758L50.062,204.133z"/>
+</svg></span>
   </li>
 </script>
