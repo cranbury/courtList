@@ -10,6 +10,7 @@ $( init );
 
 function init() {
   $('#sortable').sortable( {
+    //placeholder: 'ui-state-highlight',
     cursor: 'move',
     containment: 'document',
     start: starts,
