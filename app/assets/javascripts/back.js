@@ -5,7 +5,6 @@ savedTime = "";
 mattersLength = 0;
 itemsOnList = 0;
 
-
 $( init );
 
 function init() {
